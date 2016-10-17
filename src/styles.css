@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height:100%;
+  overflow-y:hidden;
+}
+
+md-ink-bar {
+  background-color: white
+}
+
+.md-tab-header {
+  background-color: #512DA8
+}
+
+.md-tab-label {
+  opacity: 1 !important;
+}
+
+[md-fab] {
+  min-width: 0;
+  border-radius: 50%;
+  width: 80px !important;
+  height: 80px !important;
+  padding: 0;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}

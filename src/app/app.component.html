@@ -1,3 +1,189 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout>
+
+  <md-sidenav #sidenav class="app-sidenav" class="app-sidenav">
+    <div class="app-sidenav-cover">
+      <div class="app-sidenav-photo">
+      </div>
+      <div>
+        <p class="app-sidenav-name">{{name}}</p>
+      </div>
+      <div>
+        <p class="app-sidenav-email">{{email}}</p>
+      </div>
+    </div>
+    <div style="padding: 20px; border-bottom: 1px solid #BDBDBD;">
+      <div class="app-sidenav-divider-holder">
+        <div class="app-sidenav-divider-icon-holder">
+          <md-icon class="app-sidenav-divider-icon">account_box</md-icon>
+        </div>
+        <div class="app-sidenav-divider-text-holder">
+          <p class="app-sidenav-divider-text">Account</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding: 20px; border-bottom: 1px solid #BDBDBD;">
+      <div class="app-sidenav-divider-holder">
+        <div class="app-sidenav-divider-icon-holder">
+          <md-icon class="app-sidenav-divider-icon">build</md-icon>
+        </div>
+        <div class="app-sidenav-divider-text-holder">
+          <p class="app-sidenav-divider-text">Settings</p>
+        </div>
+      </div>
+    </div>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+      <button class="app-icon-button" (click)="sidenav.toggle()">
+        <i class="material-icons app-toolbar-menu">menu</i>
+      </button>
+
+      <p class="app-title">Demo App</p>
+
+      <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+  <md-tab-group class="app-tabs">
+    <md-tab>
+      <template md-tab-label><p class="app-tab-title">Overview</p></template>
+      <template md-tab-content>
+        <div class="app-tab-overview">
+          <perfect-scrollbar class="app-perf-scroll">
+
+            <button md-fab class="app-fab-button">
+                <md-icon class="md-50 app-fab-button-icon">grade</md-icon>
+            </button>
+
+            <div class="app-cover-photo">
+            </div>
+
+            <div *ngFor="let text of staticTexts">
+              <div class="app-list-holder">
+                <div>
+                  <p class="app-header-text">{{text.title}}</p>
+                </div>
+                <div>
+                  <p class="app-secondary-text">{{text.supportingText}}</p>
+                </div>
+                <div>
+                  <p>{{text.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="app-list-holder">
+            </div>
+
+          </perfect-scrollbar>
+        </div>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label><p class="app-tab-title">Components</p></template>
+      <template md-tab-content>
+        <div class="app-tab-features">
+          <perfect-scrollbar class="app-perf-scroll">
+            <md-card>
+                  <button md-button>FLAT</button>
+                  <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+                  <button md-raised-button color="primary">PRIMARY RAISED</button>
+                  <button md-raised-button color="accent">ACCENT RAISED</button>
+                </md-card>
+
+                <md-card>
+                  <md-checkbox>Unchecked</md-checkbox>
+                  <md-checkbox [checked]="true">Checked</md-checkbox>
+                  <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+                  <md-checkbox [disabled]="true">Disabled</md-checkbox>
+                </md-card>
+
+                <md-card>
+                  <md-radio-button name="symbol">Alpha</md-radio-button>
+                  <md-radio-button name="symbol">Beta</md-radio-button>
+                  <md-radio-button name="symbol" disabled>Gamma</md-radio-button>
+                </md-card>
+
+                <md-card class="app-input-section">
+                  <md-input placeholder="First name"></md-input>
+
+                  <md-input>
+                    <md-placeholder>
+                      <i class="material-icons app-input-icon">android</i> Favorite phone
+                    </md-placeholder>
+                  </md-input>
+
+                  <md-input placeholder="Motorcycle model">
+                    <span md-prefix>
+                      <i class="material-icons app-input-icon">motorcycle</i>
+                      &nbsp;
+                    </span>
+                  </md-input>
+                </md-card>
+
+                <md-card>
+                  <md-spinner class="app-spinner"></md-spinner>
+                  <md-spinner color="accent" class="app-spinner"></md-spinner>
+                </md-card>
+
+                <md-card>
+                  <label>
+                    Indeterminate progress-bar
+                    <md-progress-bar
+                        class="app-progress"
+                        mode="indeterminate"
+                        aria-label="Indeterminate progress-bar example"></md-progress-bar>
+                  </label>
+
+                  <label>
+                    Determinate progress bar - 30%
+                    <md-progress-bar
+                        class="app-progress"
+                        color="accent"
+                        mode="determinate"
+                        [value]="30"
+                        aria-label="Determinate progress-bar example"></md-progress-bar>
+                  </label>
+                </md-card>
+
+                <md-card>
+                  <md-tab-group>
+                    <md-tab>
+                      <template md-tab-label>
+                        Earth
+                      </template>
+                      <template md-tab-content>
+                        <p>EARTH</p>
+                      </template>
+                    </md-tab>
+                    <md-tab>
+                      <template md-tab-label>
+                        Fire
+                      </template>
+                      <template md-tab-content>
+                        <p>FIRE</p>
+                      </template>
+                    </md-tab>
+                  </md-tab-group>
+                </md-card>
+
+
+                <md-card>
+                  <md-icon>build</md-icon>
+                </md-card>
+
+                <md-card>
+                  <button md-button [md-menu-trigger-for]="menu">
+                    MENU
+                  </button>
+                </md-card>
+
+                <md-menu #menu="mdMenu">
+                  <button md-menu-item>Lemon</button>
+                  <button md-menu-item>Lime</button>
+                  <button md-menu-item>Banana</button>
+                </md-menu>
+
+          </perfect-scrollbar>
+        </div>
+      </template>
+    </md-tab>
+  </md-tab-group>
+</md-sidenav-layout>
